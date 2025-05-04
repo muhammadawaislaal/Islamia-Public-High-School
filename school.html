@@ -2,160 +2,233 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Islamia High School</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Islamia High School</title>
   <style>
     /* Reset and Base Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
+    
     body {
-      background: linear-gradient(#000000dd, #000000aa), url('https://img.freepik.com/premium-vector/vertical-pink-neon-frame-brick-wall_565470-5051.jpg?w=740') no-repeat center center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
       color: white;
+      line-height: 1.6;
       overflow-x: hidden;
     }
-    /* Notification Banner */
-    */
-    @keyframes slideDown {
-      from { transform: translateY(-100%); }
-      to { transform: translateY(0); }
-    }
-    /* Header */
+    
+    /* Header Styles */
     header {
       background: rgba(10, 10, 10, 0.7);
-      padding: 40px 20px 20px;
+      padding: 2rem 1rem;
       text-align: center;
       backdrop-filter: blur(6px);
       border-bottom: 2px solid #0f0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
     }
+    
     header img {
       width: 100px;
+      height: 100px;
       border-radius: 50%;
-      box-shadow: 0 0 20px #00ffffaa;
-      animation: floatLogo 3s ease-in-out infinite;
+      object-fit: cover;
+      border: 2px solid #00ffcc;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+      transition: transform 0.3s ease;
     }
+    
+    header img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+    
     header h1 {
-      font-size: 3.5rem;
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
       color: #00ffcc;
-      text-shadow: 0 0 20px #00ffff;
-      animation: pulse 2s infinite;
-      margin-top: 10px;
+      text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
     }
+    
     header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      color: #eee;
+      font-size: 1.1rem;
+      color: #ddd;
     }
+    
     /* Navigation */
     nav {
-      background: #111;
+      background: rgba(0, 0, 0, 0.9);
       display: flex;
       justify-content: center;
-      gap: 30px;
-      padding: 15px 0;
-      font-size: 1.1rem;
+      flex-wrap: wrap;
+      padding: 1rem 0;
       position: sticky;
       top: 0;
-      z-index: 999;
-      border-bottom: 1px solid #222;
+      z-index: 100;
+      border-bottom: 1px solid #333;
     }
+    
     nav a {
-      color: #fff;
+      color: white;
       text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      font-size: 1.1rem;
       position: relative;
+      transition: color 0.3s ease;
     }
+    
+    nav a:hover {
+      color: #00ffcc;
+    }
+    
     nav a::after {
       content: '';
       position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
+      width: 0;
       height: 2px;
       background: #00ffcc;
-      transition: 0.3s ease;
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s ease;
     }
+    
     nav a:hover::after {
       width: 100%;
     }
-    /* Sections */
+    
+    /* Main Content Sections */
     section {
-      padding: 60px 10%;
-      background: rgba(0,0,0,0.6);
-      margin: 40px 0;
+      padding: 3rem 10%;
+      margin: 2rem 0;
+      background: rgba(0, 0, 0, 0.6);
       border-radius: 10px;
-      box-shadow: 0 0 25px #00ffcc33;
-      transform-style: preserve-3d;
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.1);
     }
+    
     section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      text-shadow: 0 0 15px #00ffee;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #00ffcc;
+      position: relative;
+      display: inline-block;
     }
+    
+    section h2::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 3px;
+      background: #00ffcc;
+      bottom: -10px;
+      left: 0;
+    }
+    
+    /* Grid Layout */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
     }
+    
     .card {
-      background: #111;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #0ff;
-      box-shadow: 0 0 20px #0ff4;
-      transition: transform 0.3s ease;
+      background: rgba(20, 20, 20, 0.8);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #00ffcc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    
     .card:hover {
-      transform: rotateY(10deg) scale(1.05);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 255, 204, 0.2);
     }
+    
+    .card strong {
+      color: #00ffcc;
+      display: block;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
     /* Footer */
     footer {
-      background: #000;
-      padding: 40px 20px;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 2rem;
       text-align: center;
       color: #888;
-      font-size: 0.95rem;
-      margin-top: 40px;
-      border-top: 1px solid #222;
+      margin-top: 2rem;
+      border-top: 1px solid #333;
     }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      section {
+        padding: 2rem 5%;
+      }
+      
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      nav a {
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      section h2 {
+        font-size: 1.5rem;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     /* Animations */
-    @keyframes pulse {
-      0%, 100% { text-shadow: 0 0 10px #00ffff; }
-      50% { text-shadow: 0 0 25px #00ffff; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
+    
+    section {
+      animation: fadeIn 0.5s ease forwards;
     }
-    /* Responsive */
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      section h2 { font-size: 1.8rem; }
+    
+    /* Section-specific backgrounds */
+    #about {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                 url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
     }
-    /* Section Background Images */
-    #about { background-image: url('https://img.freepik.com/free-vector/dark-hexagonal-background-with-gradient-color_79603-1409.jpg?t=st=1746305871~exp=1746309471~hmac=e35721e0afa44d7a64b91efda6a6d3095e33196df5dfffd9103102bfacf2942b&w=1380'); background-size: cover; background-position: center; }
-    #academics { background-image: url('https://images.unsplash.com/photo-1581093588401-9c40e5b6d0f4'); background-size: cover; background-position: center; }
-    #vision { background-image: url('https://img.freepik.com/free-vector/neon-frame-design_23-2149098711.jpg?t=st=1746306725~exp=1746310325~hmac=786433c6a44ee2752e310add1d71408237f807adb3070165b2bd26ed68a1af71&w=1380'); background-size: cover; background-position: center; }
-    #life { background-image: url('https://img.freepik.com/free-vector/geometric-science-education-background-vector-gradient-blue-digital-remix_53876-125993.jpg?t=st=1746306262~exp=1746309862~hmac=bc9a992e3980b635ba98f8b8b8afac997aa090de2da16551e10d776a514b7087&w=1380'); background-size: cover; background-position: center; }
-    #events { background-image: url('https://img.freepik.com/free-photo/top-view-composition-education-day-elements-with-copy-space_23-2148721216.jpg?t=st=1746306109~exp=1746309709~hmac=5cbfbdeee5ea4bed8e30de0c247fb7fb6990e2738d8b04b7c6b57ae85c5fa9ca&w=1800'); background-size: cover; background-position: center; }
-    #leadership { background-image: url(''); background-size: cover; background-position: center; }
-    #contact { background-image: url('https://img.freepik.com/free-photo/top-view-desk-dark-concept-with-copy-space_23-2148459511.jpg?t=st=1746306350~exp=1746309950~hmac=5105b22ed40db8b791335c6ea711aff59bc6d69441609bf0d9f8cb896d2c98eb&w=1380'); background-size: cover; background-position: center; }
+    
+    #academics {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                 url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+    }
+    
+    #vision {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                 url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+    }
   </style>
 </head>
 <body>
-
-  
-  <!-- Header -->
+  <!-- Header Section -->
   <header>
-    <img src="https://img.freepik.com/free-vector/gradient-school-logo-design-template_23-2149664350.jpg?t=st=1746303587~exp=1746307187~hmac=b4aa73fc3ae5a65a1412e6fb25d7467a49d9259906ca3fb130c70a6a420c4659&w=900" alt="School Logo">
+    <img src="https://via.placeholder.com/100" alt="School Logo">
     <h1>Islamia High School</h1>
     <p>"Knowledge is Light"</p>
   </header>
-
+  
   <!-- Navigation -->
   <nav>
     <a href="#about">About</a>
@@ -166,58 +239,153 @@
     <a href="#leadership">Leadership</a>
     <a href="#contact">Contact</a>
   </nav>
-
-  <!-- Sections -->
+  
+  <!-- About Section -->
   <section id="about">
     <h2>About Us</h2>
-    <p>Founded in 1995, Islamia High School is committed to academic excellence and moral growth. We create a nurturing environment that inspires young minds to become leaders of tomorrow.</p>
+    <p>Founded in 1995, Islamia High School is committed to academic excellence and moral growth. We create a nurturing environment that inspires young minds to become leaders of tomorrow while maintaining strong ethical values.</p>
   </section>
-
+  
+  <!-- Academics Section -->
   <section id="academics">
     <h2>Academics & Facilities</h2>
     <div class="grid">
-      <div class="card"><strong>📘 Subjects:</strong><br> Mathematics, Science, English, Urdu, Islamic Studies, Computer Science</div>
-      <div class="card"><strong>🏫 Facilities:</strong><br> Science Labs, Library, Computer Labs, Sports Ground</div>
-      <div class="card"><strong>📝 Admissions:</strong><br> Open for the 2025 academic year</div>
+      <div class="card">
+        <strong>📚 Subjects</strong>
+        Mathematics, Science, English, Urdu, Islamic Studies, Computer Science
+      </div>
+      <div class="card">
+        <strong>🏫 Facilities</strong>
+        Science Labs, Library, Computer Labs, Sports Ground, Prayer Area
+      </div>
+      <div class="card">
+        <strong>📝 Admissions</strong>
+        Open for 2025-26 academic session. Contact office for details.
+      </div>
     </div>
   </section>
-
+  
+  <!-- Vision Section -->
   <section id="vision">
-    <h2>🌟 Our Vision & Mission</h2>
-    <p>To empower students with knowledge, values, and confidence to face the modern world while staying rooted in strong ethical foundations. Our mission is to build responsible global citizens.</p>
+    <h2>Our Vision & Mission</h2>
+    <p>To empower students with knowledge, values, and confidence to face the modern world while staying rooted in strong ethical foundations. Our mission is to build responsible global citizens who contribute positively to society.</p>
   </section>
-
+  
+  <!-- Student Life Section -->
   <section id="life">
-    <h2>🎒 Student Life</h2>
-    <p>From science fairs to sports day, Islamia High School nurtures creativity, leadership, and teamwork. Clubs, competitions, and events enrich our students beyond the classroom.</p>
+    <h2>Student Life</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>🎨 Clubs</strong>
+        Science Club, Literary Society, Sports Teams, Quran Circle
+      </div>
+      <div class="card">
+        <strong>🏆 Competitions</strong>
+        Annual Science Fair, Quran Recitation, Sports Tournaments
+      </div>
+      <div class="card">
+        <strong>🌱 Development</strong>
+        Leadership programs, Career counseling, Community service
+      </div>
+    </div>
   </section>
-
+  
+  <!-- Events Section -->
   <section id="events">
-    <h2>📅 Events & Celebrations</h2>
+    <h2>Upcoming Events</h2>
     <div class="grid">
-      <div class="card"><strong>Annual Sports Day</strong><br> Competitions, teamwork, and medals!</div>
-      <div class="card"><strong>Science Exhibition</strong><br> Innovation and learning in action.</div>
-      <div class="card"><strong>Cultural Day</strong><br> Showcasing heritage and diversity.</div>
+      <div class="card">
+        <strong>Annual Sports Day</strong>
+        March 15, 2025 - All students participate in various competitions
+      </div>
+      <div class="card">
+        <strong>Science Exhibition</strong>
+        April 5, 2025 - Showcase of student projects and innovations
+      </div>
+      <div class="card">
+        <strong>Parent-Teacher Meeting</strong>
+        May 10, 2025 - Discuss student progress and development
+      </div>
     </div>
   </section>
-
+  
+  <!-- Leadership Section -->
   <section id="leadership">
-    <h2>Leadership</h2>
+    <h2>School Leadership</h2>
     <div class="grid">
-      <div class="card"><strong>Yameen Ahmadni</strong><br>Principal</div>
-      <div class="card"><strong>Abdul Jabbar Leghari</strong><br>Vice Principal</div>
+      <div class="card">
+        <strong>Principal</strong>
+        Yameen Ahmadni<br>
+        MA Education, 20+ years experience
+      </div>
+      <div class="card">
+        <strong>Vice Principal</strong>
+        Abdul Jabbar Leghari<br>
+        MSc Physics, 15+ years experience
+      </div>
     </div>
   </section>
-
+  
+  <!-- Contact Section -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>📍 Chowk Badrao, D.G. Khan, Punjab, Pakistan</p>
-    <p>📞 +92 344 3217429</p>
+    <h2>Contact Us</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>📍 Address</strong>
+        Chowk Badrao, D.G. Khan<br>
+        Punjab, Pakistan
+      </div>
+      <div class="card">
+        <strong>📞 Phone</strong>
+        +92 344 3217429 (Office)<br>
+        +92 300 1234567 (Admissions)
+      </div>
+      <div class="card">
+        <strong>🕒 Hours</strong>
+        Monday-Friday: 8AM - 2PM<br>
+        Saturday: 8AM - 12PM
+      </div>
+    </div>
   </section>
-
+  
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Islamia High School. Developed by <strong>Awais Laal</strong>.
+    <p>&copy; <span id="current-year"></span> Islamia High School. All Rights Reserved.</p>
+    <p>Developed by Awais Laal</p>
   </footer>
-
+  
+  <script>
+    // Automatically update year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Add animation to cards when they come into view
+    const cards = document.querySelectorAll('.card');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    cards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(card);
+    });
+  </script>
 </body>
 </html>
